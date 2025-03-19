@@ -1,0 +1,29 @@
+<div class="login-container">
+   <div class="logo-container">
+      <img src="images/angular-logo.png">
+   </div>
+   <p>Welcome Back! Login to continue...</p>
+   <form [formGroup]="loginForm" class="login-form">
+
+      <mat-form-field appearance="outline">
+         <mat-label>Email</mat-label>
+         <input matInput formControlName="email" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+         <mat-label>Password</mat-label>
+         <input matInput type="password" formControlName="password" />
+      </mat-form-field>
+
+      <mat-checkbox formControlName="remember">Remember me</mat-checkbox>
+
+      <div class="login-btn-wrapper">
+         <button class="login-btn" type="submit" mat-flat-button [disabled]="!loginForm.valid || isLoginBtnDisabled"
+            (click)="login()">Login</button>
+      </div>
+
+      <div class="login-error" *ngIf="errMessage !== null">{{ errMessage }}</div>
+   </form>
+
+
+</div>

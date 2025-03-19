@@ -1,0 +1,43 @@
+<div *ngIf="user$ | async as user">
+   <div class="mobile-menu">
+      <button mat-button [matMenuTriggerFor]="mobileMenu">
+         <mat-icon>menu</mat-icon>
+         Tubig App
+      </button>
+      <mat-menu #mobileMenu="matMenu">
+         <a mat-menu-item routerLink="/readings" routerLinkActive="active">Readings</a>
+         <a mat-menu-item routerLink="/members" routerLinkActive="active">Members</a>
+         <button mat-menu-item routerLink="/settings">Settings</button>
+         <button mat-menu-item (click)="logout()">Logout</button>
+      </mat-menu>
+   </div>
+
+   <mat-toolbar class="hide-mobile">
+      <div class="logo-name">
+         <button mat-button>
+            <mat-icon>water_drop</mat-icon>
+            Tubig App
+         </button>
+      </div>
+
+      <div class="nav-menu">
+         <a routerLink="/readings" routerLinkActive="active" class="active">Readings</a>
+         <a routerLink="/members" routerLinkActive="active">Members</a>
+      </div>
+
+      <div class="profile-dropdown">
+         <button mat-button [matMenuTriggerFor]="menu">
+            {{ user.name }}
+            <mat-icon iconPositionEnd>arrow_drop_down</mat-icon>
+         </button>
+         <mat-menu #menu="matMenu">
+            <a routerLink="/settings" mat-menu-item>Settings</a>
+            <button mat-menu-item (click)="logout()">Logout</button>
+         </mat-menu>
+      </div>
+   </mat-toolbar>
+
+   <div class="page-title hide-mobile">
+      <span>{{ activeLinkText }}</span>
+   </div>
+</div>

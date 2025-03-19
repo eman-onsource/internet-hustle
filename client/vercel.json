@@ -1,0 +1,8 @@
+{
+   "rewrites": [
+      { "source": "/login", "destination": "https://api.revalde.net/login" },
+      { "source": "/logout", "destination": "https://api.revalde.net/logout" },
+      { "source": "/sanctum/csrf-cookie", "destination": "https://api.revalde.net/sanctum/csrf-cookie" },
+      { "source": "/api/:match*", "destination": "https://api.revalde.net/api/:match*" }
+   ]
+ }
