@@ -8,6 +8,7 @@ import { filter, Observable, } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { User } from '../../interfaces/user.interface';
 import { MatMenuModule } from '@angular/material/menu';
+import { Link } from '../../interfaces/link.interface';
 
 @Component({
   selector: 'app-header',
@@ -25,9 +26,18 @@ import { MatMenuModule } from '@angular/material/menu';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit {
+  public title: string = 'Internet Hustle';
   public isAuthenticated$: Observable<boolean>;
   public user$: Observable<User>;
   public activeLinkText: string = '';
+  public links: Link[] = [
+    { link: '/dashboard', name: 'Dashboard' },
+    { link: '/customers', name: 'Customers' },
+    { link: '/plans', name: 'Plans' },
+    { link: '/invoices', name: 'Invoices' },
+    { link: '/Income', name: 'Income' },
+    { link: '/Expenses', name: 'Expenses' },
+  ];
 
   constructor(private authService: AuthService, private router: Router) {
     // These can also be put inside the `ngOnInit()`
@@ -48,14 +58,9 @@ export class HeaderComponent implements OnInit {
   }
 
   private updateActiveLinkText(): void {
-    const activeLink = this.router.url;
-
-    switch (activeLink) {
-      case '/members':
-        this.activeLinkText = 'Members';
-        break;
-      default:
-        this.activeLinkText = 'Readings';
+    const activeLink = this.links.find((link: Link) => link.link === this.router.url);
+    if (activeLink) {
+      this.activeLinkText = activeLink.name;
     }
   }
 }

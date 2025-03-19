@@ -7,6 +7,7 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
   const router = inject(Router);
 
   return next(req).pipe(catchError((err) => {
+    console.log(err);
     if ([401, 403].includes(JSON.parse(err.status))) {
       router.navigate(['/auth']);
     }

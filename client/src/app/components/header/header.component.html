@@ -2,11 +2,12 @@
    <div class="mobile-menu">
       <button mat-button [matMenuTriggerFor]="mobileMenu">
          <mat-icon>menu</mat-icon>
-         Tubig App
+         {{ title }}
       </button>
       <mat-menu #mobileMenu="matMenu">
-         <a mat-menu-item routerLink="/readings" routerLinkActive="active">Readings</a>
-         <a mat-menu-item routerLink="/members" routerLinkActive="active">Members</a>
+         <ng-container *ngFor="let link of links">
+            <a mat-menu-item routerLink="{{ link.link }}" routerLinkActive="active">{{ link.name }}</a>
+         </ng-container>
          <button mat-menu-item routerLink="/settings">Settings</button>
          <button mat-menu-item (click)="logout()">Logout</button>
       </mat-menu>
@@ -15,19 +16,20 @@
    <mat-toolbar class="hide-mobile">
       <div class="logo-name">
          <button mat-button>
-            <mat-icon>water_drop</mat-icon>
-            Tubig App
+            <mat-icon>wifi</mat-icon>
+            {{ title }}
          </button>
       </div>
 
       <div class="nav-menu">
-         <a routerLink="/readings" routerLinkActive="active" class="active">Readings</a>
-         <a routerLink="/members" routerLinkActive="active">Members</a>
+         <ng-container *ngFor="let link of links">
+            <a routerLink="{{ link.link }}" routerLinkActive="active" class="active">{{ link.name }}</a>
+         </ng-container>
       </div>
 
       <div class="profile-dropdown">
          <button mat-button [matMenuTriggerFor]="menu">
-            {{ user.name }}
+            {{ user.username }}
             <mat-icon iconPositionEnd>arrow_drop_down</mat-icon>
          </button>
          <mat-menu #menu="matMenu">

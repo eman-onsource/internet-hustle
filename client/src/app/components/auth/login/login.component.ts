@@ -36,14 +36,14 @@ export class LoginComponent implements OnInit {
   ) {
     this.authService.isLoggedIn().subscribe((isLoggedIn) => {
       if (isLoggedIn) {
-        this.router.navigate(['/readings']);
+        this.router.navigate(['/dashboard']);
       }
     });
   }
 
   public ngOnInit(): void {
     this.loginForm = this.fb.group({
-      email: ['', Validators.required],
+      username: ['', Validators.required],
       password: ['', Validators.required],
       remember: ['']
     });
@@ -51,10 +51,10 @@ export class LoginComponent implements OnInit {
 
   public login() {
     this.isLoginBtnDisabled = true;
-    const { email, password, remember } = this.loginForm.value;
+    const { username, password, remember } = this.loginForm.value;
 
-    this.authService.login(email, password, Number(remember)).subscribe({
-      next: () => window.location.href = '/readings',
+    this.authService.login(username, password, Number(remember)).subscribe({
+      next: () => window.location.href = '/dashboard',
       error: () => {
         this.errMessage = 'Login error. Check username and password.';
         this.isLoginBtnDisabled = false;

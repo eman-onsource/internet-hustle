@@ -26,8 +26,8 @@ export class AuthService {
     return this.user.asObservable();
   }
 
-  public login(email: string, password: string, remember: number) {
-    return this.http.post<any>(`/login`, { email, password, remember });
+  public login(username: string, password: string, remember: number) {
+    return this.http.post<any>(`/api/login`, { username, password, remember });
   }
 
   public logout() {
