@@ -1,0 +1,45 @@
+<div *ngIf="user$ | async as user">
+   <div class="mobile-menu">
+      <button mat-button [matMenuTriggerFor]="mobileMenu">
+         <mat-icon>menu</mat-icon>
+         {{ title }}
+      </button>
+      <mat-menu #mobileMenu="matMenu">
+         <ng-container *ngFor="let link of links">
+            <a mat-menu-item routerLink="{{ link.link }}" routerLinkActive="active">{{ link.name }}</a>
+         </ng-container>
+         <button mat-menu-item routerLink="/settings">Settings</button>
+         <button mat-menu-item (click)="logout()">Logout</button>
+      </mat-menu>
+   </div>
+
+   <mat-toolbar class="hide-mobile">
+      <div class="logo-name">
+         <button mat-button>
+            <mat-icon>wifi</mat-icon>
+            {{ title }}
+         </button>
+      </div>
+
+      <div class="nav-menu">
+         <ng-container *ngFor="let link of links">
+            <a routerLink="{{ link.link }}" routerLinkActive="active" class="active">{{ link.name }}</a>
+         </ng-container>
+      </div>
+
+      <div class="profile-dropdown">
+         <button mat-button [matMenuTriggerFor]="menu">
+            {{ user.username }}
+            <mat-icon iconPositionEnd>arrow_drop_down</mat-icon>
+         </button>
+         <mat-menu #menu="matMenu">
+            <a routerLink="/settings" mat-menu-item>Settings</a>
+            <button mat-menu-item (click)="logout()">Logout</button>
+         </mat-menu>
+      </div>
+   </mat-toolbar>
+
+   <div class="page-title hide-mobile">
+      <span>{{ activeLinkText }}</span>
+   </div>
+</div>

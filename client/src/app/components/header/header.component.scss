@@ -1,0 +1,77 @@
+:host {
+   mat-toolbar {
+      border-bottom: 1px solid #F4F4F6;
+      // display: flex;
+      background-color: #ffffff;
+      font-size: 14px;
+
+      .logo-name {
+         display: flex;
+         align-items: center;
+         margin-right: 50px;
+         color: #413736;
+
+         mat-icon {
+            color: #413736;
+         }
+      }
+   
+      .nav-menu {
+         display: flex;
+         margin-left: 20px;
+         height: 100%;
+   
+         >* {
+            margin-right: 15px;
+            line-height: 60px;
+            text-align: center;
+   
+            &:hover {
+               color: #413736;
+               border-bottom: 2px solid #dadcdf;
+               
+            }
+   
+            &.active {
+               border-bottom: 2px solid #818CF8;
+               color: #413736;
+            }
+         }
+      }
+   
+      .profile-dropdown {
+         margin-left: auto;
+
+         .mat-mdc-button:not(:disabled) {
+            color: #717785;
+         }
+      }
+   }
+   
+   .page-title {
+      padding: 15px 0px 15px 30px;
+      border-bottom: 1px solid #F4F4F6;
+      box-shadow: -1px 6px 5px -4px rgba(0,0,0,0.15);
+      -webkit-box-shadow: -1px 6px 5px -4px rgba(0,0,0,0.15);
+      -moz-box-shadow: -1px 6px 5px -4px rgba(0,0,0,0.15);
+
+      span {
+         font-size: 18px;
+         font-weight: 400;
+      }
+   }   
+}
+
+::ng-deep {
+   .mat-mdc-menu-item {
+      color: #717785 !important;
+
+      .mat-mdc-menu-item-text {
+         font-weight: normal !important;
+      }
+   }
+
+   .mobile-menu .mat-mdc-menu-panel {
+      margin-left: 4px !important;
+   }
+}

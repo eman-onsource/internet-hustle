@@ -1,0 +1,61 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 99%; }
+body { 
+   margin: 0; 
+   font-family: Roboto, "Helvetica Neue", sans-serif;
+   color: #717785;
+   font-size: .875rem;
+}
+
+a {
+   color: #717785;
+   text-decoration: none;
+}
+
+.custom-badge {
+   padding: 5px 10px 5px 10px;
+   border-radius: 20px;
+   color: #292f3f;
+   font-size: 12px;
+
+   &.warning {
+      background-color: #ffedc1;
+   }
+
+   &.default-blue {
+      background-color: #9cc1ed;
+   }
+
+   &.success {
+      background-color: #8cc98f;
+   }
+}
+
+.modal-title {
+   text-align: center;
+   font-size: 18px;
+   display: block;
+   font-weight: 500;
+   padding-top: 20px;
+   border-bottom: 2px solid #F4F4F6;
+   padding-bottom: 20px;
+}
+
+.mobile-menu {
+   display: none;
+}
+
+@media only screen and (max-width: 576px) {
+   body {
+      font-size: 12px;
+   }
+
+   .hide-mobile {
+      display: none !important;
+   }
+
+   .mobile-menu {
+      display: block;
+   }
+}

@@ -70,4 +70,10 @@ class UserController extends Controller
             'token' => $token
         ], 201);
     }
+
+    public function logout () {
+        Auth::logout();
+
+        return response()->noContent();
+    }
 }

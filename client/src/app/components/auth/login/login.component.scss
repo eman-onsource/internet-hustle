@@ -1,0 +1,44 @@
+:host {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 98vh;
+   margin: 0;
+   padding: 20px;
+
+   .logo-container {
+      text-align: center;
+
+      img {
+         width: 120px;
+      }
+   }
+
+   p {
+      text-align: center;
+      padding-top: 20px;
+      padding-bottom: 20px;
+   }
+
+   h6 {
+      text-align: center;
+   }
+
+   div.login-container {
+      width: 420px;
+
+      .login-btn, mat-form-field {
+         width: 100%;
+      }
+
+      .login-error {
+         color: #ff0000;
+         font-size: 12px;
+         padding-top: 10px;
+      }
+
+      .login-btn-wrapper {
+         margin-top: 20px;
+      }
+   }   
+}
