@@ -31,7 +31,7 @@ export class AuthService {
   }
 
   public logout() {
-    return this.http.post<any>(`/logout`, '');
+    return this.http.post<any>(`/api/logout`, {});
   }
 
   private checkAuthStatus() {

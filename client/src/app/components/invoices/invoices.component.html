@@ -1,0 +1,42 @@
+<table cellpading="0" cellspacing="0" *ngIf="invoices$ | async as invoices">
+   <thead>
+      <tr>
+         <td>#</td>
+         <td>User</td>
+         <td>Plan</td>
+         <td>Date</td>
+         <td>Amount</td>
+         <td>Status</td>
+      </tr>
+   </thead>
+   <tbody>
+      <tr *ngIf="loading$ | async; else loadInvoices;">
+         <td>Loading...</td>
+      </tr>
+
+      <ng-template #loadInvoices>
+         <tr *ngFor="let invoice of invoices">
+            <td>{{ invoice.id }}</td>
+            <td>{{ invoice.subscription.user.name }}</td>
+            <td>{{ invoice.subscription.plan.name }}</td>
+            <td>{{ invoice.start_date | date:'mediumDate' }} - {{ invoice.end_date | date:'mediumDate' }}</td>
+            <td>₱{{ invoice.subscription.plan.price }}</td>
+            <td>
+               <span class="custom-badge" [class]="{
+                  'warning': !invoice.is_paid, 
+                  'success': invoice.is_paid
+                  }">
+                  {{ invoice.is_paid ? 'Paid' : 'Unpaid' }}
+               </span>
+               &nbsp;
+               <button mat-raised-button *ngIf="!invoice.is_paid" (click)="pay(invoice)">Pay</button>
+            </td>
+         </tr>
+      </ng-template>
+
+   </tbody>
+</table>
+
+<div class="footer">
+   <button mat-flat-button (click)="createInvoice()">Create Invoice</button>
+</div>

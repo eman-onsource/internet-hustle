@@ -34,6 +34,7 @@ export class HeaderComponent implements OnInit {
     { link: '/dashboard', name: 'Dashboard' },
     { link: '/customers', name: 'Customers' },
     { link: '/plans', name: 'Plans' },
+    { link: '/subscriptions', name: 'Subscriptions' },
     { link: '/invoices', name: 'Invoices' },
     { link: '/Income', name: 'Income' },
     { link: '/Expenses', name: 'Expenses' },
